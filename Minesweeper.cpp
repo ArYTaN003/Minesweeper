@@ -4,10 +4,11 @@
 #include<ctime>
 
 using namespace std;
-#include "Board.h"
+
+#include "Game.h"
 
 int main(){
-    srand(time(0));
-    Board board(9,9);
-    board.setup();
+    srand(time(0)); // This makes sure that the random numbers generated are different each time the program is run
+    Game game(0);
+    game.start_game();
 }
