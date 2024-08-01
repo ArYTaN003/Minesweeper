@@ -15,7 +15,6 @@ class Board{
                 mine_row = rand()%rows;
                 mine_col = rand()%cols;
             }
-            
             board[mine_row][mine_col] = 'M';
         }
     }
