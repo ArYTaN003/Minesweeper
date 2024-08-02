@@ -8,7 +8,9 @@ using namespace std;
 #include "Game.h"
 
 int main(){
-    srand(time(0)); // This makes sure that the random numbers generated are different each time the program is run
-    Game game(0);
+    cout << "1. Easy" << endl << "2. Medium" << endl << "3. Hard" << endl <<  "Choose a difficulty : ";
+    int difficulty;
+    cin >> difficulty;
+    Game game(difficulty-1);
     game.start_game();
 }
