@@ -23,7 +23,7 @@ class Board{
             int mine_row = rand()%rows;
             int mine_col = rand()%cols;
             // we keep generating the row and col for mines until we get a cell which is a space , and it is a valid cell.
-            while(board[mine_row][mine_col]!='#' || !valid(mine_row,mine_col,init_r,init_c)){
+            while(board[mine_row][mine_col]!=' ' || !valid(mine_row,mine_col,init_r,init_c)){
                 mine_row = rand()%rows;
                 mine_col = rand()%cols;
             }
@@ -42,12 +42,12 @@ class Board{
     }
     void open(int r,int c){
         hidden_board[r][c] = board[r][c];
-        if(board[r][c]!='#') return ;
+        if(board[r][c]!=' ') return ;
         for(int i=0;i<8;i++){
             int cell_row = r+directions[i].first;
             int cell_col = c+directions[i].second;
             if(cell_row<0 || cell_col<0 || cell_row>=rows || cell_col>=cols || board[cell_row][cell_col]=='M') continue;
-            if(hidden_board[cell_row][cell_col]=='.' && board[cell_row][cell_col]=='#'){
+            if(hidden_board[cell_row][cell_col]=='.' && board[cell_row][cell_col]==' '){
                 open(cell_row,cell_col);
             }else{
                 hidden_board[cell_row][cell_col] = board[cell_row][cell_col];
@@ -59,7 +59,7 @@ class Board{
             int cell_row = r+directions[i].first;
             int cell_col = c+directions[i].second;
             if(cell_row<0 || cell_col<0 || cell_row>=rows || cell_col>=cols || board[cell_row][cell_col]=='M') continue;
-            if(board[cell_row][cell_col]=='#'){
+            if(board[cell_row][cell_col]==' '){
                 board[cell_row][cell_col] = '1';
             }else{
                 board[cell_row][cell_col] = '0'+((board[cell_row][cell_col]-'0')+1);
@@ -77,9 +77,8 @@ class Board{
     }
     public:
     Board(int m,int n,int mines){
-        // '#' -> Space
         // Initialize the board with spaces , we can fill these spaces with numbers
-        board = vector<vector<char>>(m,vector<char>(n,'#'));
+        board = vector<vector<char>>(m,vector<char>(n,' '));
         hidden_board = vector<vector<char>>(m,vector<char>(n,'.'));
         rows = m;
         cols = n;
