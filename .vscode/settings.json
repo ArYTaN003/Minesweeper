@@ -2,6 +2,7 @@
     "files.associations": {
         ".fantomasignore": "ignore",
         "vector": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "ostream": "cpp"
     }
 }

@@ -23,7 +23,7 @@ class Game{
         board->display();
     }
     void start_game(){
-        int init_r,init_c,op=-1;
+        int init_r,init_c,op=-1,r,c,validation;
         cout << "Choose a cell to start : ";
         cin >> init_r >> init_c;
         board->initialize(init_r,init_c);
@@ -31,14 +31,11 @@ class Game{
             board->display();
             cout << "Remaining Flags :" << flags << endl;
             cout << "Choose a cell : ";
-            cin >> init_r >> init_c;
+            cin >> r >> c;
             cout << "Do you want to flag(1) or open(0) : ";
             cin >> op;
-            int validation = board->valid_move(init_r,init_c,op,flags);
-            if(validation==-1){
-                break;
-            }
-        }while(!board->allMinesCovered());
+            validation = board->valid_move(r,c,op,flags);
+        }while(!board->allMinesCovered() && validation!=-1);
         if(board->allMinesCovered()) win();
         else{ 
             game_over();
