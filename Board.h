@@ -66,7 +66,8 @@ class Board{
             }
         }
     }
-    void fillBoard(){
+    void fillBoard(int init_r,int init_c){
+        getMines(init_r,init_c);
         for(int i=0;i<rows;i++){
             for(int j=0;j<cols;j++){
                 if(board[i][j]=='M'){
@@ -87,7 +88,7 @@ class Board{
     void display(){
         for(int i=0;i<rows;i++){
             for(int j=0;j<cols;j++){
-                cout << hidden_board[i][j] << " ";
+                cout << '|' <<  hidden_board[i][j] << '|';
             }
             cout << endl;
         }
@@ -99,8 +100,7 @@ class Board{
         return true;
     }
     void initialize(int init_r,int init_c){
-        getMines(init_r,init_c);
-        fillBoard();
+        fillBoard(init_r,init_c);
         open(init_r,init_c);
     }
     int valid_move(int r,int c,int op,int& flags){
